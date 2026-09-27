@@ -1,0 +1,830 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keer's Minecraft Cafe — GitHub README Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Inconsolata:wght@400;700&display=swap');
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #1a0f08;
+    color: #F3E4C8;
+    font-family: 'Inconsolata', monospace;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  
+  /* Outer cafe wrapper */
+  .cafe-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #2B1B14;
+    border-left: 8px solid #432C20;
+    border-right: 8px solid #432C20;
+    position: relative;
+  }
+  
+  /* Wood beam ceiling */
+  .cafe-ceiling {
+    background: #432C20;
+    height: 24px;
+    border-bottom: 4px solid #795334;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+  .beam-dot { width: 8px; height: 8px; background: #795334; border-radius: 2px; }
+  
+  /* Floor */
+  .cafe-floor {
+    background: repeating-linear-gradient(90deg, #432C20 0px, #432C20 48px, #2B1B14 48px, #2B1B14 96px);
+    height: 16px;
+  }
+  
+  .readme-content {
+    padding: 0 32px 48px;
+    background: #2B1B14;
+  }
+  
+  /* Section styles */
+  .section {
+    margin: 48px 0;
+    text-align: center;
+  }
+  
+  .section-img {
+    width: 80%;
+    max-width: 700px;
+    border-radius: 4px;
+    image-rendering: pixelated;
+    display: block;
+    margin: 16px auto;
+    border: 3px solid #432C20;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px #795334;
+  }
+  
+  .hero-img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    margin: 0 auto;
+    border: none;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.8);
+  }
+  
+  h1 {
+    font-family: 'Press Start 2P', monospace;
+    color: #D99A4E;
+    font-size: 20px;
+    text-shadow: 3px 3px 0 #432C20, -1px -1px 0 #2B1B14;
+    margin: 24px 0 12px;
+    line-height: 1.5;
+  }
+  
+  h2 {
+    font-family: 'Press Start 2P', monospace;
+    color: #D99A4E;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 #432C20;
+    margin: 32px 0 16px;
+    padding: 12px 20px;
+    background: #432C20;
+    border: 2px solid #795334;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  
+  h3 {
+    font-family: 'VT323', monospace;
+    color: #B8895A;
+    font-size: 22px;
+    margin: 20px 0 8px;
+  }
+  
+  p {
+    color: #E8D2AA;
+    font-size: 15px;
+    margin: 8px 0;
+  }
+  
+  em { color: #B8895A; font-style: italic; }
+  
+  /* Divider */
+  .divider {
+    width: 100%;
+    overflow: hidden;
+    margin: 32px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #D99A4E;
+    font-size: 18px;
+  }
+  .divider-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #795334, #B8895A, #795334, transparent);
+  }
+  
+  /* Nav bar */
+  .nav-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  .nav-item {
+    background: #432C20;
+    border: 2px solid #795334;
+    color: #D99A4E;
+    padding: 6px 12px;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-item:hover {
+    background: #795334;
+    color: #F3E4C8;
+    transform: translateY(-2px);
+  }
+  
+  /* Personality badges */
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 16px 0;
+  }
+  .badge {
+    padding: 4px 12px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: 'Inconsolata', monospace;
+  }
+  .badge-brown { background: #432C20; color: #D99A4E; border: 1px solid #795334; }
+  .badge-green { background: #3a4a2e; color: #8aaa60; border: 1px solid #667A50; }
+  .badge-light { background: #795334; color: #F3E4C8; border: 1px solid #B8895A; }
+  
+  /* Code block / journal */
+  .code-block {
+    background: #1a0f08;
+    border: 2px solid #432C20;
+    border-left: 4px solid #D99A4E;
+    border-radius: 4px;
+    padding: 20px 24px;
+    text-align: left;
+    font-family: 'Inconsolata', monospace;
+    font-size: 14px;
+    color: #E8D2AA;
+    white-space: pre;
+    overflow-x: auto;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Table */
+  table {
+    width: 80%;
+    max-width: 700px;
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+  
+  td {
+    padding: 16px;
+    border: 2px solid #432C20;
+    background: #1e1208;
+    vertical-align: top;
+    font-size: 14px;
+    color: #E8D2AA;
+  }
+  
+  td strong {
+    color: #D99A4E;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 4px;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+  }
+  
+  /* Featured project */
+  .featured-card {
+    background: linear-gradient(135deg, #2B1B14, #432C20);
+    border: 3px solid #D99A4E;
+    border-radius: 8px;
+    padding: 32px;
+    max-width: 640px;
+    margin: 0 auto;
+    box-shadow: 0 0 40px rgba(217, 154, 78, 0.15), 0 8px 32px rgba(0,0,0,0.5);
+    text-align: center;
+  }
+  .featured-card .proj-title {
+    font-family: 'Press Start 2P', monospace;
+    color: #D99A4E;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  .featured-card p {
+    color: #E8D2AA;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .featured-card .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin: 12px 0;
+  }
+  .tech-tag {
+    background: #432C20;
+    border: 1px solid #795334;
+    color: #D99A4E;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-family: 'Inconsolata', monospace;
+    border-radius: 3px;
+  }
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .btn {
+    background: #795334;
+    color: #F3E4C8;
+    border: 2px solid #B8895A;
+    padding: 10px 20px;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: #B8895A;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+  .btn-dark {
+    background: #432C20;
+    border-color: #795334;
+  }
+  
+  /* Small project cards */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .proj-card {
+    background: #1e1208;
+    border: 2px solid #432C20;
+    border-radius: 4px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .proj-card h4 {
+    font-family: 'VT323', monospace;
+    color: #D99A4E;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .proj-card p {
+    font-size: 11px;
+    color: #B8895A;
+    margin-bottom: 8px;
+  }
+  .proj-card .tech {
+    font-size: 10px;
+    color: #795334;
+    font-family: 'Inconsolata', monospace;
+    margin-bottom: 10px;
+  }
+  .gh-link {
+    background: #432C20;
+    color: #D99A4E;
+    border: 1px solid #795334;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-family: 'Inconsolata', monospace;
+    border-radius: 3px;
+    text-decoration: none;
+  }
+  
+  /* Beyond code */
+  .beyond-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .beyond-card {
+    background: #1e1208;
+    border: 2px solid #432C20;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: left;
+  }
+  .beyond-card h4 {
+    font-family: 'VT323', monospace;
+    color: #D99A4E;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .beyond-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .beyond-card li {
+    color: #E8D2AA;
+    font-size: 13px;
+    margin-bottom: 6px;
+    padding-left: 16px;
+    position: relative;
+  }
+  .beyond-card li::before {
+    content: '▸';
+    color: #D99A4E;
+    position: absolute;
+    left: 0;
+  }
+  
+  /* Contact */
+  .contact-links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  .contact-btn {
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    text-decoration: none;
+    border: 2px solid;
+    transition: all 0.2s;
+  }
+  .contact-btn:hover { transform: translateY(-2px); }
+  .cb-github { background: #432C20; color: #D99A4E; border-color: #795334; }
+  .cb-linkedin { background: #795334; color: #F3E4C8; border-color: #B8895A; }
+  .cb-email { background: #2B1B14; color: #D99A4E; border-color: #432C20; }
+  
+  /* Skill badges */
+  .skill-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 8px 0 20px;
+  }
+  .skill-badge {
+    background: #432C20;
+    color: #D99A4E;
+    border: 1px solid #795334;
+    padding: 6px 16px;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    border-radius: 3px;
+  }
+  .skill-badge.learning { background: #2a3a20; color: #8aaa60; border-color: #667A50; }
+  
+  /* Animated SVG container */
+  .anim-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    margin: 16px 0;
+  }
+  .anim-row img {
+    image-rendering: pixelated;
+  }
+  
+  /* Pixel corner decorations */
+  .corner-left  { position: absolute; top: 32px; left: 16px; font-size: 24px; opacity: 0.4; }
+  .corner-right { position: absolute; top: 32px; right: 16px; font-size: 24px; opacity: 0.4; }
+  
+  /* Final sign */
+  .final-sign {
+    background: #432C20;
+    border: 3px solid #795334;
+    border-radius: 6px;
+    padding: 24px 40px;
+    max-width: 480px;
+    margin: 24px auto;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    color: #F3E4C8;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .final-sign .coffee { color: #D99A4E; font-size: 28px; }
+  
+  .footer-note {
+    font-size: 11px;
+    color: #795334;
+    text-align: center;
+    margin-top: 24px;
+    font-style: italic;
+  }
+  
+  /* Typing animation for header */
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  .cursor { animation: blink 1s step-end infinite; color: #D99A4E; }
+</style>
+</head>
+<body>
+
+<div class="cafe-wrapper">
+
+  <!-- Ceiling beam -->
+  <div class="cafe-ceiling">
+    <div class="beam-dot"></div>
+    <div class="beam-dot"></div>
+    <div class="beam-dot"></div>
+    <div class="beam-dot"></div>
+    <div class="beam-dot"></div>
+    <div class="beam-dot"></div>
+    <div class="beam-dot"></div>
+    <div class="beam-dot"></div>
+    <div class="beam-dot"></div>
+    <div class="beam-dot"></div>
+    <div class="beam-dot"></div>
+  </div>
+
+  <!-- HERO -->
+  <img class="hero-img" src="assets/cafe-hero.jpg" alt="Keer's Cafe Hero"/>
+
+  <div class="readme-content">
+    
+    <!-- Typing header -->
+    <div class="section" style="margin-top: 32px;">
+      <h1 id="typing-header">Hi, I'm Keer 👋<span class="cursor">|</span></h1>
+      <p style="font-family: 'VT323', monospace; font-size: 20px; color: #B8895A;">
+        aspiring software engineer, figuring out stuff.
+      </p>
+      
+      <!-- Animated SVG elements -->
+      <div class="anim-row" style="margin: 24px 0;">
+        <img src="assets/lantern.svg" height="80" alt="Lantern"/>
+        <img src="assets/cat.svg" height="60" alt="Cat"/>
+        <img src="assets/coffee-steam.svg" height="80" alt="Coffee Steam"/>
+      </div>
+      
+      <!-- Nav bar -->
+      <div class="nav-bar">
+        <a href="#about" class="nav-item">☕ About</a>
+        <a href="#love" class="nav-item">🪟 Things I Love</a>
+        <a href="#learned" class="nav-item">🫙 Learned</a>
+        <a href="#toolbox" class="nav-item">🧰 Toolbox</a>
+        <a href="#featured" class="nav-item">⭐ Featured</a>
+        <a href="#journal" class="nav-item">📓 Journal</a>
+        <a href="#contact" class="nav-item">✉️ Contact</a>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      <img src="assets/cafe-divider.svg" width="80%" height="50" alt="divider"/>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- ABOUT ME -->
+    <div class="section" id="about">
+      <h2>📖 &nbsp; About Me</h2>
+      <img class="section-img" src="assets/cafe-about.jpg" alt="About notebook"/>
+      <br/>
+      <div class="code-block">I'm Keer — an aspiring software engineer figuring out
+how things work, building random stuff, learning constantly,
+and occasionally pretending I know what I'm doing.
+
+Come in, grab a coffee, and see what I'm building. ☕</div>
+      <br/>
+      <div class="badges">
+        <span class="badge badge-brown">🔍 curious</span>
+        <span class="badge badge-brown">🔨 builder</span>
+        <span class="badge badge-green">✨ chaotic good</span>
+        <span class="badge badge-brown">🌱 always learning</span>
+        <span class="badge badge-light">💃 dancer</span>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      ☕ &nbsp; 🍂 &nbsp; ☕
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- THINGS I LOVE -->
+    <div class="section" id="love">
+      <h2>🪟 &nbsp; Things I Love</h2>
+      <img class="section-img" src="assets/cafe-things-i-love.jpg" alt="Things I Love board"/>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      ☕ &nbsp; 🍂 &nbsp; ☕
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- WHAT I'VE LEARNED -->
+    <div class="section" id="learned">
+      <h2>🫙 &nbsp; Things I've Learned ☕</h2>
+      <p><em>Labelled jars on the cafe shelf — things I've actually worked with.</em></p>
+      <br/>
+      <img class="section-img" src="assets/cafe-skills-shelf.jpg" alt="Skills shelf"/>
+      <br/>
+      <table>
+        <tr>
+          <td><strong>🐍 Python</strong>My go-to language. I've built things, broken things, and learned a lot.</td>
+          <td><strong>🗄️ MySQL</strong>Tables, queries, joins. Data storage that actually makes sense.</td>
+          <td><strong>🐼 Pandas</strong>Wrangling data frames, cleaning messy datasets, finding patterns.</td>
+          <td><strong>📈 Matplotlib</strong>Turning numbers into charts that tell a story.</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      ☕ &nbsp; 🍂 &nbsp; ☕
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- CURRENTLY BREWING -->
+    <div class="section" id="brewing">
+      <h2>🫖 &nbsp; Currently Brewing... ☕</h2>
+      <p><em>These are on the stove. Still steaming. Watch this space.</em></p>
+      <br/>
+      <img class="section-img" src="assets/cafe-brewing.jpg" alt="Brewing shelf"/>
+      <br/>
+      <table>
+        <tr>
+          <td><strong>🌐 Web Dev</strong>HTML, CSS, JS and the chaotic magic of building for browsers.</td>
+          <td><strong>⚡ Arduino</strong>Microcontrollers, circuits, and making things actually do things.</td>
+          <td><strong>✨ Gen AI</strong>Language models, APIs, and what happens when you give AI a task.</td>
+          <td><strong>🪶 Prompt Eng</strong>The craft of talking to AI well. More nuanced than it sounds.</td>
+        </tr>
+      </table>
+      <br/>
+      <img src="assets/coffee-steam.svg" height="60" alt="Steam"/>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      ☕ &nbsp; 🍂 &nbsp; ☕
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- TOOLBOX -->
+    <div class="section" id="toolbox">
+      <h2>🧰 &nbsp; My Toolbox</h2>
+      <p><em>The cafe's big chalkboard — everything I've put on the shelf so far.</em></p>
+      <br/>
+      <img class="section-img" src="assets/cafe-toolbox.jpg" alt="Toolbox board"/>
+      <br/>
+      <h3>🐍 Programming</h3>
+      <div class="skill-badges">
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">C</span>
+        <span class="skill-badge">SQL</span>
+      </div>
+      <h3>📊 Data and Visualization</h3>
+      <div class="skill-badges">
+        <span class="skill-badge">Pandas</span>
+        <span class="skill-badge">Matplotlib</span>
+        <span class="skill-badge">MySQL</span>
+      </div>
+      <h3>🌐 Web</h3>
+      <div class="skill-badges">
+        <span class="skill-badge">HTML</span>
+        <span class="skill-badge">CSS</span>
+        <span class="skill-badge">JavaScript</span>
+        <span class="skill-badge learning">learning more...</span>
+      </div>
+      <h3>✨ AI</h3>
+      <div class="skill-badges">
+        <span class="skill-badge">Generative AI</span>
+        <span class="skill-badge">Gemini API</span>
+        <span class="skill-badge">Prompt Engineering</span>
+      </div>
+      <h3>🛠️ Tools</h3>
+      <div class="skill-badges">
+        <span class="skill-badge">Git</span>
+        <span class="skill-badge">GitHub</span>
+        <span class="skill-badge">Linux</span>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      ☕ &nbsp; 🍂 &nbsp; ☕
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- FEATURED BUILD -->
+    <div class="section" id="featured">
+      <h2>⭐ &nbsp; Featured Build</h2>
+      <img class="section-img" src="assets/cafe-featured.jpg" alt="Featured project"/>
+      <br/>
+      <div class="featured-card">
+        <div class="proj-title">✋ Air Drawing</div>
+        <p>
+          Air Drawing is a computer vision project that lets you draw, write, and sketch in mid-air using just your hand and a webcam. Using real-time hand gesture detection, it tracks your fingertip's movement and translates it into strokes on screen — no stylus, no touchscreen, just your hand in space. Point, move, and create. It's part drawing tool, part magic trick.
+        </p>
+        <div class="tech-tags">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">MediaPipe</span>
+          <span class="tech-tag">NumPy</span>
+        </div>
+        <div class="btn-row">
+          <a href="https://github.com/keerthana-exe/air-drawing" class="btn">🖊️ View Project</a>
+          <a href="https://github.com/keerthana-exe/air-drawing" class="btn btn-dark">🐙 GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      ☕ &nbsp; 🍂 &nbsp; ☕
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- OTHER PROJECTS -->
+    <div class="section" id="projects">
+      <h2>🍰 &nbsp; Other Things I've Baked</h2>
+      <p><em>Smaller builds — pastries on the counter. Not the headline act, but still good.</em></p>
+      <br/>
+      <img class="section-img" src="assets/cafe-projects.jpg" alt="Other projects"/>
+      <br/>
+      <div class="projects-grid">
+        <div class="proj-card">
+          <h4>🧁 Airion</h4>
+          <p>A voice-powered assistant that listens, thinks, and responds.</p>
+          <div class="tech">Python · Speech Recognition</div>
+          <a href="https://github.com/keerthana-exe/airion" class="gh-link">GitHub</a>
+        </div>
+        <div class="proj-card">
+          <h4>🎵 Jingle Matcher</h4>
+          <p>Recognizes songs and musical patterns. Hum a tune, get a match.</p>
+          <div class="tech">Python · Audio Processing</div>
+          <a href="https://github.com/keerthana-exe/jingle-matcher" class="gh-link">GitHub</a>
+        </div>
+        <div class="proj-card">
+          <h4>🗺️ Seatlas</h4>
+          <p>A seat mapping tool for events and venues.</p>
+          <div class="tech">Python · MySQL · Data</div>
+          <a href="https://github.com/keerthana-exe/seatlas" class="gh-link">GitHub</a>
+        </div>
+        <div class="proj-card">
+          <h4>📚 KCET Tracker</h4>
+          <p>Tracks KCET exam prep and performance.</p>
+          <div class="tech">Python · Pandas · Matplotlib</div>
+          <a href="https://github.com/keerthana-exe/kcet-tracker" class="gh-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      ☕ &nbsp; 🍂 &nbsp; ☕
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- JOURNAL -->
+    <div class="section" id="journal">
+      <h2>📓 &nbsp; From the Cafe Journal</h2>
+      <p><em>What's been going on in the workshop lately.</em></p>
+      <br/>
+      <img class="section-img" src="assets/cafe-journal.jpg" alt="Cafe journal"/>
+      <br/>
+      <div class="code-block">📅 Recent journal entries
+─────────────────────────────────────────────
+
+☕  learning web development — it's like
+    furniture assembly with no instructions
+
+✨  experimenting with AI — asking models
+    weird questions and seeing what sticks
+
+🔨  building projects — the "I have no idea
+    if this will work" phase is my favourite
+
+⚡  exploring Arduino — turns out hardware
+    is just software you can physically drop
+
+📈  improving my coding — slowly, steadily,
+    one confused bug at a time
+
+🤔  figuring out software engineering —
+    still figuring it out, honestly
+
+─────────────────────────────────────────────
+(more entries pending. coffee in progress.)</div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      ☕ &nbsp; 🍂 &nbsp; ☕
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- BEYOND CODE -->
+    <div class="section" id="beyond">
+      <h2>🏷️ &nbsp; Beyond Code</h2>
+      <p><em>The cafe notice board — things that are not on a resume but matter anyway.</em></p>
+      <br/>
+      <div class="beyond-grid">
+        <div class="beyond-card">
+          <h4>💬 Communication</h4>
+          <p style="font-size:12px; color:#B8895A; margin-bottom:12px;">The cafe is not just about the coffee — it's about the conversation.</p>
+          <ul>
+            <li>Explaining technical ideas to non-technical people</li>
+            <li>Presenting projects clearly and with confidence</li>
+            <li>Collaborating across messy, real-world problems</li>
+            <li>Finding the right words when "it just works" isn't enough</li>
+          </ul>
+        </div>
+        <div class="beyond-card">
+          <h4>🌟 Initiative and Teamwork</h4>
+          <p style="font-size:12px; color:#B8895A; margin-bottom:12px;">Someone has to start brewing before the cafe opens.</p>
+          <ul>
+            <li>Taking the first step when nobody else wants to</li>
+            <li>Coordinating moving parts across a project</li>
+            <li>Working well in a team without needing to be in charge</li>
+            <li>Turning "what if we built..." into something you can click</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      ☕ &nbsp; 🍂 &nbsp; ☕
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- CONTACT / EXIT -->
+    <div class="section" id="contact">
+      <h2>✉️ &nbsp; Find Me Outside the Cafe</h2>
+      <img class="section-img" src="assets/cafe-exit.jpg" alt="Cafe exit"/>
+      <br/>
+      <p>Leave a note on the notice board. I read every one.</p>
+      <br/>
+      <div class="contact-links">
+        <a href="https://github.com/keerthana-exe" class="contact-btn cb-github">🐙 GitHub</a>
+        <a href="https://linkedin.com/in/keerthana-exe" class="contact-btn cb-linkedin">💼 LinkedIn</a>
+        <a href="mailto:your-email@example.com" class="contact-btn cb-email">✉️ Email</a>
+      </div>
+      <br/>
+      <!-- Butterfly animation -->
+      <img src="assets/butterfly.svg" width="100%" height="80" alt="Butterfly"/>
+      <br/>
+      <div class="final-sign">
+        <div class="coffee">☕</div>
+        <div style="margin: 12px 0; font-size: 22px;">Thanks for stopping by.</div>
+        <div style="font-size: 15px; color: #B8895A;">The cafe is always open. Come back anytime.</div>
+      </div>
+      <p class="footer-note">Built by Keer · Pixel art generated with ☕ and way too much coffee · No neon was harmed in the making of this profile</p>
+    </div>
+
+  </div><!-- end readme-content -->
+
+  <!-- Floor -->
+  <div class="cafe-floor"></div>
+
+</div><!-- end cafe-wrapper -->
+
+</body>
+</html>
